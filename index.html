@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theresa Pragasam — Brand &amp; Commercial Leadership</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FAF9F6;
+      --warm-white: #F5F3EF;
+      --ink: #1A1916;
+      --ink-muted: #5C5A55;
+      --ink-faint: #6B6966;
+      --accent: #1A7A6E;
+      --rule: #E0DDD8;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 15px; line-height: 1.7; }
+    .site-root { padding: 0 0 4rem; max-width: 1100px; margin: 0 auto; }
+
+    /* HERO */
+    .hero { border-bottom: 1px solid var(--rule); padding: 3rem 2.5rem 2.5rem; display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; }
+    .hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .hero-name { font-family: var(--serif); font-size: 48px; font-weight: 400; line-height: 1.1; color: var(--ink); margin-bottom: 1rem; }
+    .hero-line { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--ink-muted); margin-bottom: 1.5rem; max-width: 520px; }
+    .hero-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .hero-meta span { font-size: 13px; color: var(--ink-muted); }
+    .hero-meta .sep { color: var(--rule); }
+    .hero-contact { display: flex; flex-direction: column; gap: 0.5rem; align-items: flex-end; flex-shrink: 0; }
+    .contact-chip { font-size: 12px; color: var(--ink-muted); background: var(--warm-white); border: 1px solid var(--rule); border-radius: 2px; padding: 4px 10px; white-space: nowrap; }
+
+    /* NAV */
+    .nav-strip { display: flex; border-bottom: 1px solid var(--rule); padding: 0 2.5rem; overflow-x: auto; }
+    .nav-item { font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); padding: 1rem 1.25rem; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; background: none; border-top: none; border-left: none; border-right: none; font-family: var(--sans); transition: color 0.15s, border-color 0.15s; }
+    .nav-item:hover { color: var(--ink); }
+    .nav-item.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+    /* SECTIONS */
+    .section-panel { display: none; padding: 2.5rem; }
+    .section-panel.active { display: block; }
+    .section-intro { max-width: 680px; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); font-size: 17px; line-height: 1.75; color: var(--ink-muted); }
+    .section-intro strong { color: var(--ink); font-weight: 500; }
+    .section-h3 { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
+
+    /* METRICS */
+    .metrics-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 2px; overflow: hidden; margin-bottom: 2.5rem; }
+    .metric { background: var(--cream); padding: 1.25rem 1.5rem; text-align: center; }
+    .metric-num { font-family: var(--serif); font-size: 30px; font-weight: 400; color: var(--ink); line-height: 1; margin-bottom: 4px; }
+    .metric-num span { color: var(--accent); }
+    .metric-label { font-size: 12px; color: var(--ink-faint); line-height: 1.4; }
+
+    /* QUOTE */
+    .quote-block { border-left: 2px solid var(--accent); padding: 1rem 1.5rem; margin: 2rem 0; background: var(--warm-white); }
+    .quote-block p { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--ink); line-height: 1.65; }
+
+    /* EXPERTISE */
+    .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+    .expertise-card { border-left: 2px solid var(--accent); padding-left: 1rem; }
+    .expertise-name { font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+    .expertise-desc { font-size: 13px; color: var(--ink-muted); line-height: 1.55; }
+
+    /* COMPANY BLOCKS */
+    .co-block { margin-bottom: 2.5rem; }
+    .co-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 0.35rem; flex-wrap: wrap; }
+    .co-name { font-family: var(--serif); font-size: 19px; font-weight: 500; color: var(--ink); }
+    .co-meta { font-size: 12px; color: var(--ink-faint); }
+    .co-role-tag { font-size: 12px; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem; }
+    .co-context { font-size: 14px; color: var(--ink-muted); line-height: 1.65; margin-bottom: 0.85rem; font-style: italic; border-left: 2px solid var(--rule); padding-left: 0.85rem; }
+    .co-bullets { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-bottom: 1rem; }
+    .co-bullets li { font-size: 14px; color: var(--ink-muted); padding-left: 1rem; position: relative; line-height: 1.6; }
+    .co-bullets li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 1px; background: var(--accent); }
+    .co-bullets li strong { color: var(--ink); font-weight: 500; }
+    .co-divider { border: none; border-top: 1px solid var(--rule); margin: 2rem 0; }
+
+    /* FULL CAREER ROLES */
+    .full-role { margin-bottom: 3rem; }
+    .full-role-header { display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start; margin-bottom: 0.5rem; }
+    .full-role-co { font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--ink); }
+    .full-role-period { font-size: 12px; font-weight: 500; color: var(--accent); letter-spacing: 0.04em; white-space: nowrap; padding-top: 6px; }
+    .full-role-sector { font-size: 12px; color: var(--ink-faint); margin-bottom: 0.4rem; }
+    .full-role-title { font-family: var(--serif); font-size: 16px; font-style: italic; color: var(--ink-muted); margin-bottom: 1rem; }
+    .full-role-narrative { font-size: 14px; color: var(--ink-muted); line-height: 1.75; margin-bottom: 1.25rem; }
+    .full-role-narrative strong { color: var(--ink); font-weight: 500; }
+    .full-role-achievements { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .full-role-achievements li { font-size: 14px; color: var(--ink-muted); padding-left: 1.1rem; position: relative; line-height: 1.65; }
+    .full-role-achievements li::before { content: ''; position: absolute; left: 0; top: 10px; width: 5px; height: 1px; background: var(--accent); }
+    .full-role-achievements li strong { color: var(--ink); font-weight: 500; }
+    .full-role-divider { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+
+    /* EARLIER / GEO */
+    .earlier-list { display: flex; flex-direction: column; gap: 8px; padding: 1rem 0; }
+    .earlier-item { display: flex; gap: 1rem; font-size: 13px; }
+    .earlier-co { color: var(--ink); font-weight: 500; min-width: 180px; flex-shrink: 0; }
+    .earlier-title { color: var(--ink-muted); }
+    .geo-strip { background: var(--warm-white); border: 1px solid var(--rule); border-radius: 2px; padding: 1.25rem 1.5rem; margin-top: 2rem; }
+    .geo-label { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+    .geo-list { font-size: 13px; color: var(--ink-muted); }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-contact { align-items: flex-start; }
+      .hero-name { font-size: 36px; }
+      .full-role-header { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="site-root">
+
+  <div class="hero">
+    <div>
+      <div class="hero-eyebrow">Brand &amp; Commercial Leadership</div>
+      <h1 class="hero-name">Theresa Pragasam</h1>
+      <p class="hero-line">I build brands as growth engines.</p>
+      <div class="hero-meta">
+        <span>London</span><span class="sep">·</span>
+        <span>British Citizen</span><span class="sep">·</span>
+        <span>15+ years</span><span class="sep">·</span>
+        <span>Fintech · Insurtech · Financial Services</span>
+      </div>
+    </div>
+    <div class="hero-contact">
+      <div class="contact-chip">theresa.sels@gmail.com</div>
+      <div class="contact-chip">+44 7961 238 761</div>
+      <div class="contact-chip">linkedin.com/in/theresapragasam</div>
+    </div>
+  </div>
+
+  <nav class="nav-strip">
+    <button class="nav-item active" onclick="showSection('overview',this)">Overview</button>
+    <button class="nav-item" onclick="showSection('brand',this)">Brand &amp; Positioning</button>
+    <button class="nav-item" onclick="showSection('gtm',this)">GTM &amp; Marketing</button>
+    <button class="nav-item" onclick="showSection('insight',this)">Insight &amp; Performance</button>
+    <button class="nav-item" onclick="showSection('leadership',this)">Leadership</button>
+    <button class="nav-item" onclick="showSection('career',this)">Career</button>
+  </nav>
+
+  <!-- OVERVIEW -->
+  <div id="overview" class="section-panel active">
+    <div class="section-intro">
+      Senior marketing and brand leader with <strong>15+ years</strong> building and scaling marketing functions from scratch across fast-growing fintechs, insurtechs and global financial services businesses across the UK, Asia and the Middle East. Deep expertise at the intersection of <strong>product, sales and marketing</strong>, translating complex, evolving propositions into clear narratives that drive commercial outcomes.
+    </div>
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-num">2<span>×</span></div><div class="metric-label">AUM doubled at StashAway within two years</div></div>
+      <div class="metric"><div class="metric-num">50<span>%+</span></div><div class="metric-label">Acquisition growth, category-first product launch</div></div>
+      <div class="metric"><div class="metric-num">30<span>%</span></div><div class="metric-label">HNW acquisition growth, Opus by Prudential</div></div>
+      <div class="metric"><div class="metric-num">20<span>%+</span></div><div class="metric-label">Conversion uplift in three months at Smart Pension</div></div>
+      <div class="metric"><div class="metric-num">5</div><div class="metric-label">International markets built and scaled simultaneously</div></div>
+    </div>
+    <div class="quote-block"><p>"A builder and a strategist. I set the direction, build the function, and deliver the results. My edge is making marketing commercially accountable: connecting brand strategy directly to pipeline, acquisition and growth."</p></div>
+    <div class="section-h3">Core expertise</div>
+    <div class="expertise-grid">
+      <div class="expertise-card"><div class="expertise-name">Brand strategy &amp; positioning</div><div class="expertise-desc">Building category-defining narratives from scratch across complex, regulated markets.</div></div>
+      <div class="expertise-card"><div class="expertise-name">GTM &amp; product marketing</div><div class="expertise-desc">Taking complex products to market with clarity, from strategy to activation.</div></div>
+      <div class="expertise-card"><div class="expertise-name">Insight &amp; performance</div><div class="expertise-desc">Measurement frameworks, audience segmentation and AI-enabled optimisation.</div></div>
+      <div class="expertise-card"><div class="expertise-name">Marketing function leadership</div><div class="expertise-desc">Building teams from scratch and scaling them across multiple markets.</div></div>
+      <div class="expertise-card"><div class="expertise-name">Stakeholder &amp; board influence</div><div class="expertise-desc">Trusted C-suite partner, shaping strategy at board level and driving alignment.</div></div>
+      <div class="expertise-card"><div class="expertise-name">Change &amp; transformation</div><div class="expertise-desc">Leading brand and marketing through mergers, rapid scale and market volatility.</div></div>
+    </div>
+  </div>
+
+  <!-- BRAND -->
+  <div id="brand" class="section-panel">
+    <div class="section-intro">
+      Brand strategy is where commercial ambition and creative clarity meet. I build brand as a <strong>business asset</strong>, defining positioning, messaging architecture and creative standards that hold across markets, channels and stages of growth. I have built brand strategy independently at each of my last three companies, often from a blank page.
+    </div>
+    <div class="section-h3">By company</div>
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Smart Pension</div><div class="co-meta">Global fintech · UK pensions · Apr 2025 – Mar 2026</div></div>
+      <div class="co-role-tag">Brand &amp; Retail Marketing Director</div>
+      <div class="co-context">Joined a business with no defined brand strategy, operating in a highly regulated and politically sensitive category. Pensions as a category suffers from low consumer engagement and high complexity. The brand needed to work for both individual members and institutional employers.</div>
+      <ul class="co-bullets">
+        <li>Defined brand strategy, tone of voice and messaging architecture from scratch, creating clarity and differentiation across all touchpoints in a crowded regulated market</li>
+        <li>Positioned Smart Pension as an authoritative voice on workplace pensions and regulatory reform, building influence with government bodies and The Pensions Regulator</li>
+        <li>Developed a thought leadership programme that aligned communications to policy shifts and market changes, strengthening positioning with both consumer and institutional audiences</li>
+        <li><strong>Engagement improved by 20%+ within three months</strong> of the new brand strategy being implemented</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">StashAway</div><div class="co-meta">Global fintech · Digital wealth · Feb 2022 – Mar 2025</div></div>
+      <div class="co-role-tag">Group Brand Marketing Director</div>
+      <div class="co-context">Headhunted to build brand strategy and marketing from scratch across five international markets simultaneously. StashAway operated in a category where trust, credibility and clarity are existential to growth. The brand needed to challenge established financial institutions without the heritage or budget to match them.</div>
+      <ul class="co-bullets">
+        <li>Built brand positioning, messaging frameworks and visual and verbal identity independently, establishing a category-defining narrative that challenged financial services conventions</li>
+        <li>Drove <strong>top-three market position across five markets</strong> and <strong>doubled AUM within two years</strong> despite challenging market conditions</li>
+        <li>Restored brand trust and customer confidence following a period of significant market volatility through a sustained content and thought leadership programme</li>
+        <li>Maintained brand coherence and creative standards across five markets, managing agency rosters and internal teams simultaneously</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Singlife / Singlife with Aviva</div><div class="co-meta">Fintech · Insurtech · Jun 2020 – Feb 2022</div></div>
+      <div class="co-role-tag">Group Head of Brand Marketing</div>
+      <div class="co-context">Headhunted into a complex merger situation. Two established financial services brands were being combined under significant time pressure, with multiple stakeholder groups, regulatory scrutiny and a consumer audience that needed confidence that the new entity was safe, credible and coherent.</div>
+      <ul class="co-bullets">
+        <li>Defined brand narrative and communications strategy for the newly merged entity, synthesising two distinct brand equities into a unified, consistent positioning</li>
+        <li>Maintained brand equity and consumer confidence throughout the merger period, preventing churn during the highest-risk phase of integration</li>
+        <li>Shaped and defended brand strategy at board level, navigating complex multi-stakeholder environments under significant time and political pressure</li>
+        <li>Contributed to <strong>20%+ uplift in customer acquisition</strong> through the merger period</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Prudential</div><div class="co-meta">Global insurance · Asset management · Aug 2017 – May 2020</div></div>
+      <div class="co-role-tag">Head of Brand Marketing &amp; Sponsorships</div>
+      <div class="co-context">Responsible for repositioning one of the world's most recognised financial services brands across Asia, managing a multidisciplinary team of 20 and a $10M+ budget. The challenge was refreshing a heritage brand without losing the trust and recognition that made it valuable.</div>
+      <ul class="co-bullets">
+        <li>Repositioned the brand through narrative and campaign strategy, increasing <strong>awareness by 5 points and consideration by 2 points</strong></li>
+        <li>Built and launched Opus by Prudential, a category-first HNW proposition, from brand positioning and creative direction through to full-funnel campaign activation</li>
+        <li>Managed strategic partnerships with insurance sector groups, academic institutions and global media owners to build brand authority and amplify thought leadership</li>
+        <li>Rationalised the agency ecosystem, consolidating external partners and building internal creative capability, delivering <strong>20%+ cost savings whilst improving output quality</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- GTM -->
+  <div id="gtm" class="section-panel">
+    <div class="section-intro">
+      I take complex products to market with clarity. Whether it is a category-first fintech product, a newly merged insurance proposition or a high-net-worth offering, I translate what the product does into <strong>narratives that move customers</strong>, from awareness to acquisition to advocacy.
+    </div>
+    <div class="section-h3">By company</div>
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Smart Pension</div><div class="co-meta">Global fintech · UK pensions · Apr 2025 – Mar 2026</div></div>
+      <div class="co-role-tag">Brand &amp; Retail Marketing Director</div>
+      <div class="co-context">Delivered full-funnel marketing in a regulated B2B2C environment, reaching both individual pension members and the employers and intermediaries who chose the platform.</div>
+      <ul class="co-bullets">
+        <li>Introduced behaviour and needs-based audience segmentation, enabling targeted messaging frameworks across both member and employer audiences</li>
+        <li>Delivered full-funnel marketing across digital, content and direct channels, building team capability and an operating model for ongoing delivery</li>
+        <li><strong>Conversion improved by 20%+ within three months</strong> through sharper audience targeting and clearer proposition messaging</li>
+        <li>Applied AI to content development and campaign optimisation, improving velocity and efficiency within tight regulatory constraints</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">StashAway</div><div class="co-meta">Global fintech · Digital wealth · Feb 2022 – Mar 2025</div></div>
+      <div class="co-role-tag">Group Brand Marketing Director</div>
+      <div class="co-context">Built the full GTM capability across five markets, taking complex investment products to market in a way that made them feel safe, accessible and compelling. The biggest GTM challenge was Simple Guaranteed, a category-first product that needed to create a new category whilst driving immediate acquisition.</div>
+      <ul class="co-bullets">
+        <li>Developed and launched GTM strategy for Simple Guaranteed, translating a complex investment product into a clear consumer narrative. Drove <strong>50%+ acquisition uplift</strong> and set an industry standard subsequently adopted by competitors</li>
+        <li>Built a creator-led ambassador programme from scratch, developing the content strategy, commercial framework and measurement model. Contributed <strong>30% to overall acquisition growth</strong></li>
+        <li>Built integrated campaign capability across five markets, establishing audience frameworks, channel strategy and a measurement model tied directly to commercial outcomes</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Singlife / Singlife with Aviva</div><div class="co-meta">Fintech · Insurtech · Jun 2020 – Feb 2022</div></div>
+      <div class="co-role-tag">Group Head of Brand Marketing</div>
+      <div class="co-context">Led GTM for a newly merged entity spanning insurance, investments and savings, taking a complex multi-product proposition to market at a moment of maximum instability.</div>
+      <ul class="co-bullets">
+        <li>Designed and implemented an integrated brand campaign for the merged entity spanning all product lines, improving <strong>acquisition by 20%</strong></li>
+        <li>Led end-to-end campaign delivery across audience strategy, creative development, channel planning, execution, measurement and optimisation</li>
+        <li>Leveraged partnerships with Forrester and global media owners to amplify thought leadership and build institutional credibility throughout the merger</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Prudential</div><div class="co-meta">Global insurance · Asset management · Aug 2017 – May 2020</div></div>
+      <div class="co-role-tag">Head of Brand Marketing &amp; Sponsorships</div>
+      <div class="co-context">Owned the full marketing remit across paid, owned and earned channels with a $10M+ budget, delivering integrated programmes across Asia aligned to product and commercial priorities.</div>
+      <ul class="co-bullets">
+        <li>Built and launched Opus by Prudential from GTM strategy through to campaign activation, driving <strong>30%+ HNW acquisition growth within six months</strong></li>
+        <li>Led full-funnel integrated campaigns across TV, OOH, print, radio and digital, <strong>exceeding targets by 20%</strong></li>
+        <li>Partnered with Product, Legal and Distribution to ensure regulatory alignment, consistency and measurable growth across all campaign activity</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">RISE Global</div><div class="co-meta">Edtech · Asia · Oct 2015 – Jun 2017</div></div>
+      <div class="co-role-tag">Global Director, Brand Marketing &amp; Customer Experience</div>
+      <div class="co-context">Built and led brand, marketing and sales for a high-growth education platform across Asia from an early stage, with responsibility for driving student membership growth across multiple markets.</div>
+      <ul class="co-bullets">
+        <li>Delivered <strong>30–35% growth in student membership</strong> through market localisation and brand-led commercial strategy</li>
+        <li>Built the commercial and brand infrastructure that contributed to a <strong>successful business sale within three years</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- INSIGHT -->
+  <div id="insight" class="section-panel">
+    <div class="section-intro">
+      Effective marketing is built on insight and accountable to commercial outcomes. I build <strong>measurement frameworks from scratch</strong>, embed AI into marketing operations and create the data infrastructure that links campaign investment to growth, not just impressions.
+    </div>
+    <div class="section-h3">By company</div>
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Smart Pension</div><div class="co-meta">Global fintech · UK pensions · Apr 2025 – Mar 2026</div></div>
+      <div class="co-role-tag">Brand &amp; Retail Marketing Director</div>
+      <ul class="co-bullets">
+        <li>Built audience insight and segmentation strategy from scratch, enabling more targeted and effective customer engagement across member and employer audiences</li>
+        <li>Applied AI to content development and optimisation, increasing velocity, efficiency and data-led decision making within a regulated environment</li>
+        <li>Introduced performance tracking and commercial reporting, shifting the marketing function from activity-based to outcomes-based measurement</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">StashAway</div><div class="co-meta">Global fintech · Digital wealth · Feb 2022 – Mar 2025</div></div>
+      <div class="co-role-tag">Group Brand Marketing Director</div>
+      <ul class="co-bullets">
+        <li>Built the customer segmentation and marketing measurement framework aligning campaign performance to commercial objectives across five markets</li>
+        <li>Embedded AI tools into creative development and optimisation, using AI to build visual assets, test creative and improve campaign results at scale</li>
+        <li>Partnered with Analytics and Product teams to build data infrastructure connecting marketing activity to acquisition, deposits and AUM growth</li>
+        <li>Used Midjourney for visual content creation and optimisation, reducing creative production costs whilst maintaining brand standards</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Singlife / Singlife with Aviva</div><div class="co-meta">Fintech · Insurtech · Jun 2020 – Feb 2022</div></div>
+      <div class="co-role-tag">Group Head of Brand Marketing</div>
+      <ul class="co-bullets">
+        <li>Established attribution frameworks and a clear performance dashboard enabling ROI tracking and data-led commercial decision making across a multi-product business</li>
+        <li>Developed clear audience segmentation across insurance, investments and savings product lines, enabling targeted communications at scale</li>
+        <li>Leveraged Forrester analyst relationships to benchmark brand performance and build institutional credibility</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Prudential</div><div class="co-meta">Global insurance · Asset management · Aug 2017 – May 2020</div></div>
+      <div class="co-role-tag">Head of Brand Marketing &amp; Sponsorships</div>
+      <ul class="co-bullets">
+        <li>Built a measurement dashboard combining data across paid, owned and earned channels, aligning insight to commercial objectives to optimise performance and demonstrate ROI</li>
+        <li>Established brand tracking framework measuring awareness, consideration and broker satisfaction across markets, with results improving by 5pts, 2pts and 12pts respectively</li>
+      </ul>
+    </div>
+
+    <div class="section-h3">Tools &amp; platforms</div>
+    <div class="expertise-grid">
+      <div class="expertise-card"><div class="expertise-name">AI tools</div><div class="expertise-desc">Claude, ChatGPT, Midjourney, applied to content creation, research, strategy and visual asset production.</div></div>
+      <div class="expertise-card"><div class="expertise-name">Marketing automation</div><div class="expertise-desc">Workflow automation, campaign orchestration and operational efficiency across multi-market teams.</div></div>
+      <div class="expertise-card"><div class="expertise-name">Data &amp; analytics</div><div class="expertise-desc">Insight-led decision making, from audience segmentation and attribution to commercial performance tracking.</div></div>
+    </div>
+  </div>
+
+  <!-- LEADERSHIP -->
+  <div id="leadership" class="section-panel">
+    <div class="section-intro">
+      I build marketing functions, not just teams. I have scaled from zero across multiple companies, establishing processes, governance, measurement standards and ways of working that survive growth and change. I am a <strong>trusted C-suite partner</strong>, equally comfortable in the boardroom and in the work.
+    </div>
+    <div class="section-h3">By company</div>
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Smart Pension</div><div class="co-meta">Global fintech · UK pensions · Apr 2025 – Mar 2026</div></div>
+      <div class="co-role-tag">Brand &amp; Retail Marketing Director</div>
+      <ul class="co-bullets">
+        <li>Built the marketing team and function from scratch, establishing structure, processes, governance and ways of working in a business that had no defined marketing capability</li>
+        <li>Acted as senior advisor to the CEO and leadership team, aligning brand and marketing strategy to business objectives and regulatory requirements</li>
+        <li>Transformed the function from a delivery operation to a commercially focused, insight-led marketing capability within the contract period</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">StashAway</div><div class="co-meta">Global fintech · Digital wealth · Feb 2022 – Mar 2025</div></div>
+      <div class="co-role-tag">Group Brand Marketing Director</div>
+      <ul class="co-bullets">
+        <li>Built and scaled a global, multi-disciplinary marketing function across five regulated markets, covering brand, PR, content, CRM, digital and campaigns</li>
+        <li>Partnered closely with Product, Legal and Analytics to maintain brand standards, ensure regulatory compliance and connect marketing activity to commercial outcomes</li>
+        <li>Built agency roster and governance model across five markets, managing creative, media and content partners simultaneously</li>
+        <li>Embedded AI tools and measurement infrastructure across the marketing function, building long-term operational capability</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Singlife / Singlife with Aviva</div><div class="co-meta">Fintech · Insurtech · Jun 2020 – Feb 2022</div></div>
+      <div class="co-role-tag">Group Head of Brand Marketing</div>
+      <ul class="co-bullets">
+        <li>Led brand and marketing through a complex merger, maintaining team performance and momentum during significant organisational change and uncertainty</li>
+        <li>Shaped and defended brand and marketing strategy at board level, navigating multi-stakeholder environments across two merged organisations</li>
+        <li>Secured senior leadership alignment around a unified brand vision under significant time pressure and competing priorities</li>
+      </ul>
+    </div>
+    <hr class="co-divider">
+
+    <div class="co-block">
+      <div class="co-header"><div class="co-name">Prudential</div><div class="co-meta">Global insurance · Asset management · Aug 2017 – May 2020</div></div>
+      <div class="co-role-tag">Head of Brand Marketing &amp; Sponsorships</div>
+      <ul class="co-bullets">
+        <li>Led a team of 20 across brand, marketing and sponsorships in a global regulated financial services business</li>
+        <li>Rationalised the agency ecosystem, consolidating external partners and building internal creative capability, delivering <strong>20%+ cost savings whilst improving output quality</strong></li>
+        <li>Managed strategic partnerships with insurance sector groups, academic institutions and global media owners across Asia</li>
+        <li>Collaborated across Legal, Compliance, Distribution and Analytics to drive brand governance and deliver commercially accountable outcomes</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CAREER -->
+  <div id="career" class="section-panel">
+
+    <div class="full-role">
+      <div class="full-role-header">
+        <div>
+          <div class="full-role-co">Smart Pension</div>
+          <div class="full-role-sector">Global fintech · UK pensions</div>
+          <div class="full-role-title">Brand &amp; Retail Marketing Director</div>
+        </div>
+        <div class="full-role-period">Apr 2025 – Mar 2026 · Contract</div>
+      </div>
+      <div class="full-role-narrative">Smart Pension is a regulated UK pensions platform operating at the intersection of financial services, government policy and consumer engagement. Joined on a contract basis to lead brand strategy and marketing at a moment of significant regulatory change, with The Pensions Regulator actively reshaping the landscape for workplace pension providers. The business had no defined brand strategy and a marketing function operating as a delivery operation rather than a commercial driver.</div>
+      <div class="full-role-narrative">Built the brand strategy, tone of voice and messaging architecture from scratch, creating clarity and differentiation in a crowded and low-engagement category. Developed a thought leadership programme positioning Smart Pension as an authoritative voice on workplace pensions and regulatory reform, strengthening the business's relationships with government and regulatory bodies. In parallel, transformed the marketing function into a commercially focused, insight-led operation with proper measurement, governance and team capability.</div>
+      <ul class="full-role-achievements">
+        <li>Defined brand strategy and messaging architecture independently in a complex regulated category, creating differentiation where none previously existed</li>
+        <li>Built and executed thought leadership programme, positioning Smart Pension as a credible voice with The Pensions Regulator and government bodies during a period of significant policy change</li>
+        <li>Introduced audience segmentation and needs-based targeting, enabling more effective engagement across both individual members and employer audiences</li>
+        <li>Applied AI to content development and campaign optimisation, improving delivery velocity and efficiency within regulatory constraints</li>
+        <li><strong>Engagement improved by 20%+ in three months</strong>; conversion rate improved significantly through sharper proposition messaging</li>
+        <li>Built marketing team capability from the ground up, establishing processes, governance and measurement frameworks</li>
+      </ul>
+    </div>
+    <hr class="full-role-divider">
+
+    <div class="full-role">
+      <div class="full-role-header">
+        <div>
+          <div class="full-role-co">StashAway</div>
+          <div class="full-role-sector">Global fintech · Digital wealth management</div>
+          <div class="full-role-title">Group Brand Marketing Director</div>
+        </div>
+        <div class="full-role-period">Feb 2022 – Mar 2025</div>
+      </div>
+      <div class="full-role-narrative">Headhunted to build and own global brand strategy, marketing and communications across StashAway, a multi-market digital wealth platform operating across Singapore, Malaysia, Hong Kong, the UAE and Thailand. Joined at a critical inflection point: the business needed to scale significantly across markets whilst maintaining brand coherence, and was operating in a category where consumer trust and credibility were existential to commercial performance.</div>
+      <div class="full-role-narrative">Built the brand and marketing function from scratch. Defined brand positioning, messaging frameworks and creative standards independently, establishing a category-defining narrative that challenged established financial services conventions. Built and led a multi-disciplinary team spanning brand, PR, content, CRM, digital and campaigns across five regulated markets simultaneously. During a period of significant market volatility, led the communications effort to restore consumer confidence and protect brand equity through a sustained thought leadership and content programme.</div>
+      <ul class="full-role-achievements">
+        <li>Built brand positioning and narrative independently, establishing StashAway as a credible alternative to traditional wealth management across five markets</li>
+        <li>Drove <strong>top-three market position</strong> across five markets and <strong>doubled AUM within two years</strong> despite challenging market conditions</li>
+        <li>Developed and launched Simple Guaranteed, a <strong>category-first product</strong>, driving <strong>50%+ acquisition uplift</strong> and setting an industry standard subsequently adopted by competitors</li>
+        <li>Built a creator-led ambassador programme from scratch. Contributed <strong>30% to overall acquisition growth</strong></li>
+        <li>Restored brand trust and customer confidence following a period of significant market volatility through a robust content and thought leadership strategy</li>
+        <li>Built marketing measurement framework linking campaign performance to acquisition, deposits and AUM growth across five markets</li>
+        <li>Embedded AI tools including Midjourney and ChatGPT into creative development and content optimisation, reducing production costs whilst scaling output</li>
+      </ul>
+    </div>
+    <hr class="full-role-divider">
+
+    <div class="full-role">
+      <div class="full-role-header">
+        <div>
+          <div class="full-role-co">Singlife / Singlife with Aviva</div>
+          <div class="full-role-sector">Fintech · Insurtech · Asia</div>
+          <div class="full-role-title">Group Head of Brand Marketing</div>
+        </div>
+        <div class="full-role-period">Jun 2020 – Feb 2022</div>
+      </div>
+      <div class="full-role-narrative">Headhunted to lead brand and communications through one of the most complex situations in financial services: a major merger between Singlife and Aviva's Singapore business, creating a newly combined entity spanning insurance, investments and savings. The merger involved multiple stakeholder groups, regulatory scrutiny, competing internal priorities and a consumer audience that needed to trust that the new business was safe, stable and coherent.</div>
+      <div class="full-role-narrative">Led brand strategy, narrative and integrated campaigns through the full merger period. Defined the new entity's brand positioning, synthesising two distinct brand equities into a unified, coherent identity. Shaped and defended the brand strategy at board level, navigating complex multi-stakeholder environments under significant time pressure. Simultaneously delivered integrated marketing campaigns across all product lines, maintaining commercial momentum and consumer confidence throughout the integration.</div>
+      <ul class="full-role-achievements">
+        <li>Defined brand narrative and communications strategy for the newly merged Singlife with Aviva, maintaining brand equity and consumer confidence throughout integration</li>
+        <li>Shaped and defended brand strategy at board level across two merged organisations, securing alignment from senior leadership under significant time pressure</li>
+        <li>Designed and delivered integrated brand campaign spanning all product lines, resulting in <strong>20%+ uplift in customer acquisition</strong></li>
+        <li>Leveraged partnerships with Forrester and global media owners to build institutional credibility and amplify thought leadership during the merger</li>
+        <li>Established attribution frameworks, audience segmentation and performance dashboards for a newly combined multi-product business</li>
+        <li>Rebuilt and aligned marketing team capability across two merged organisations, maintaining performance and momentum during significant organisational change</li>
+      </ul>
+    </div>
+    <hr class="full-role-divider">
+
+    <div class="full-role">
+      <div class="full-role-header">
+        <div>
+          <div class="full-role-co">Prudential</div>
+          <div class="full-role-sector">Global insurance · Asset management</div>
+          <div class="full-role-title">Head of Brand Marketing &amp; Sponsorships</div>
+        </div>
+        <div class="full-role-period">Aug 2017 – May 2020</div>
+      </div>
+      <div class="full-role-narrative">Responsible for brand strategy, integrated marketing communications and sponsorships across Asia for one of the world's most recognised financial services brands. Led a team of 20 across brand, marketing and sponsorships with a $10M+ budget, working closely with Product, Legal, Distribution and Compliance to deliver commercially accountable brand programmes across a complex, regulated multi-market environment.</div>
+      <div class="full-role-narrative">Repositioned the Prudential brand through narrative and integrated campaign strategy, refreshing the brand's visual and verbal identity and delivering full-funnel programmes across TV, OOH, print, radio and digital. Built and launched Opus by Prudential, a category-first HNW proposition, from brand strategy and creative direction through to full market activation.</div>
+      <ul class="full-role-achievements">
+        <li>Repositioned one of the world's most recognised financial services brands, increasing <strong>awareness by 5 points, consideration by 2 points and broker satisfaction by 12 points</strong></li>
+        <li>Built and launched Opus by Prudential, a category-first HNW proposition, driving <strong>30%+ HNW acquisition growth within six months</strong></li>
+        <li>Led full-funnel integrated campaigns across TV, OOH, print, radio and digital with a $10M+ budget, <strong>exceeding targets by 20%</strong></li>
+        <li>Rationalised the agency ecosystem, delivering <strong>20%+ cost savings whilst improving output quality and consistency</strong></li>
+        <li>Managed strategic partnerships with insurance sector bodies, academic institutions and global media owners across Asia</li>
+        <li>Built brand tracking framework and cross-channel measurement dashboard, aligning insight to commercial objectives across all campaign activity</li>
+      </ul>
+    </div>
+    <hr class="full-role-divider">
+
+    <div class="full-role">
+      <div class="full-role-header">
+        <div>
+          <div class="full-role-co">RISE Global</div>
+          <div class="full-role-sector">Edtech · Asia</div>
+          <div class="full-role-title">Global Director, Brand Marketing &amp; Customer Experience</div>
+        </div>
+        <div class="full-role-period">Oct 2015 – Jun 2017</div>
+      </div>
+      <div class="full-role-narrative">Built and led brand, marketing, sales and customer experience for a high-growth education platform across Asia. Joined at an early stage and built the commercial and brand infrastructure from scratch, driving student membership growth across multiple markets through localisation, brand-led strategy and a strong customer experience model.</div>
+      <ul class="full-role-achievements">
+        <li>Delivered <strong>30–35% growth in student membership</strong> through market localisation and brand-led commercial strategy</li>
+        <li>Built brand, marketing and sales infrastructure from the ground up, creating the commercial foundation that enabled rapid growth</li>
+        <li>Contributed to a <strong>successful business sale within three years</strong> of joining</li>
+      </ul>
+    </div>
+    <hr class="full-role-divider">
+
+    <div class="section-h3">Earlier career</div>
+    <div class="earlier-list">
+      <div class="earlier-item"><div class="earlier-co">IHG</div><div class="earlier-title">Director, Brand Management AMEA</div></div>
+      <div class="earlier-item"><div class="earlier-co">Hertz Corporation</div><div class="earlier-title">Head of Global Brand Marketing</div></div>
+      <div class="earlier-item"><div class="earlier-co">Viacom / MTV</div><div class="earlier-title">Regional Manager, Brand Marketing</div></div>
+      <div class="earlier-item"><div class="earlier-co">London Underground</div><div class="earlier-title">Internal Communications Consultant</div></div>
+    </div>
+
+    <div class="geo-strip">
+      <div class="geo-label">Geographic experience</div>
+      <div class="geo-list">United Kingdom · Europe · Hong Kong · Southeast Asia · Middle East · China · India · Australia &amp; New Zealand · Japan</div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  function showSection(id, btn) {
+    document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+</body>
+</html>
